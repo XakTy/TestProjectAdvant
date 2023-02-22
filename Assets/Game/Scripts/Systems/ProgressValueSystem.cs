@@ -9,6 +9,11 @@ namespace Game
 		private readonly EcsFilter<ProgressValue, MaxProgressValue> _filterProgress = default ;
 		private readonly RuntimeData _runtimeData = default;
 
+		public ProgressValueSystem(RuntimeData runtimeData)
+		{
+			_runtimeData = runtimeData;
+		}
+
 		public void Run()
 		{
 			foreach (var i in _filterProgress)

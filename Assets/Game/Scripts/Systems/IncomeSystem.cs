@@ -9,6 +9,12 @@ namespace Game
 		private readonly EcsFilter<Level,BusinessDataRef, Multiply, IncomeEvent> _filterIncomeEvent = default;
 		private readonly PlayerData _playerData = default;
 		private readonly UI _ui = default;
+
+		public IncomeSystem(PlayerData playerData, UI ui)
+		{
+			_playerData = playerData;
+			_ui = ui;
+		}
 		public void Run()
 		{
 			foreach (var i in _filterIncomeEvent)

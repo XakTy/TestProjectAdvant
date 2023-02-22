@@ -36,28 +36,28 @@ namespace Game.Scripts.Other
             Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create(_systems);
 #endif
 
-            GameInitialization.InitializeUi(_staticData);
+            var ui = GameInitialization.InitializeUi(_staticData);
             _runtimeData = new RuntimeData();
             _saveLoadSystem = new SaveLoadSystem();
 
             InitlizationPlayer();
 
-            _saveSystem = new SaveSystem();
+            _saveSystem = new SaveSystem(_saveLoadSystem, _staticData, _playerData);
 
 
 			_systems
                 // register your systems here, for example:
-                .Add(new InitializeSystem())
+                .Add(new InitializeSystem(_world, _sceneData, _saveLoadSystem, _staticData, ui, _playerData))
 
-                .Add(new ProgressValueSystem())
+                .Add(new ProgressValueSystem(_runtimeData))
 
                 .Add(new BusinessProgressViewSystem())
-                .Add(new BusinessInitSystem())
-                .Add(new BusinessAdvInitSystem())
+                .Add(new BusinessInitSystem(_playerData, _staticData))
+                .Add(new BusinessAdvInitSystem(_playerData))
                 .Add(new BusinessUpdateViewSystem())
                 
                 .Add(_saveSystem)
-                .Add(new IncomeSystem())
+                .Add(new IncomeSystem(_playerData, ui))
 
                 // inject 
                 .Inject(_sceneData)
@@ -65,7 +65,7 @@ namespace Game.Scripts.Other
                 .Inject(_staticData)
                 .Inject(_saveLoadSystem)
                 .Inject(_playerData)
-                .Inject(Service<UI>.Get())
+                .Inject(ui)
 
                 .OneFrame<IncomeEvent>()
                 .OneFrame<InitEvent>()

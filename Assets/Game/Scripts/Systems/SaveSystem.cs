@@ -19,6 +19,14 @@ namespace Game
 
 		private readonly StaticData _staticData = default;
 
+		public SaveSystem(ISaveLoad saveLoad, StaticData staticData, PlayerData playerData)
+		{
+			_saveLoadSystem = saveLoad;
+			_staticData = staticData;
+			_playerData = playerData;
+		}
+
+
 		public void Run()
 		{
 			if (_filter.IsEmpty()) return;

@@ -7,6 +7,7 @@ using Game.Scripts.Other.States;
 using Leopotam.Ecs;
 using Game.Scripts.SO.BussinesSO;
 using UnityEngine;
+using Game.Scripts.Other.Interfaces;
 
 namespace Game
 {
@@ -16,13 +17,24 @@ namespace Game
 
         private readonly SceneData _sceneData = default;
 
-		private readonly SaveLoadSystem _saveLoadSystem = default;
+		private readonly ISaveLoad _saveLoadSystem = default;
 
 		private readonly StaticData _staticData = default;
 
 		private readonly UI _ui = default;
 
 		private readonly PlayerData _playerData = default;
+
+		public InitializeSystem(EcsWorld world, SceneData sceneData, ISaveLoad saveLoad, StaticData staticData,
+			UI ui, PlayerData playerData)
+		{
+			_world = world;
+			_sceneData = sceneData;
+			_saveLoadSystem = saveLoad;
+			_staticData = staticData;
+			_ui = ui;
+			_playerData = playerData;
+		}
 
 		public void Init()
         {

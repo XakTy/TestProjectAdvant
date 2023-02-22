@@ -15,6 +15,12 @@ namespace Game
 
 		private readonly StaticData _staticData = default;
 
+		public BusinessInitSystem(PlayerData playerData, StaticData staticData)
+		{
+			_playerData = playerData;
+			_staticData = staticData;
+		}
+
 		public void Run()
 		{
 			if (_filterInit.IsEmpty()) return;

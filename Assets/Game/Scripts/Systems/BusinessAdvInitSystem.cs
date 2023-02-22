@@ -1,4 +1,5 @@
 ﻿using Game.Scripts.Components;
+using Game.Scripts.Other.Dates;
 using Game.Scripts.Other.Player;
 using Game.Scripts.Other.States;
 using Game.Scripts.SO.BussinesSO;
@@ -14,6 +15,11 @@ namespace Game
 		private readonly PlayerData _playerData = default;
 
 		private const float DIV_VALUE = 100f;
+
+		public BusinessAdvInitSystem(PlayerData playerData)
+		{
+			_playerData = playerData;
+		}
 		public void Run()
 		{
 			if (_filterBusinessAdv.IsEmpty()) return;
