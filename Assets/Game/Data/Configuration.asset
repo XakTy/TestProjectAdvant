@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfd09c19fa9a5b7479144ccff7b206cd, type: 3}
+  m_Name: Configuration
+  m_EditorClassIdentifier: 
+  businessPrefab: {fileID: 698542412075265721, guid: b0687d975dec68a4e95556dea0e4f13b, type: 3}
+  businessAdvPrefab: {fileID: 6024561151919283121, guid: e1343cec450438547b609b58584679e5, type: 3}
+  Levels: {fileID: 11400000, guid: 6bb550dff9e931946b7c81ac5f866266, type: 2}
+  UI: {fileID: 571883779780090454, guid: 667ff98e594a25748bff81da940189b0, type: 3}
+  MultiplyForAllBusiness: 1
+  Businnes:
+  - IsBuy: 1
+    Data: {fileID: 11400000, guid: 32d79b34cfeeacb44a7a0db74fb13e70, type: 2}
+  - IsBuy: 0
+    Data: {fileID: 11400000, guid: 99e0a5ea560b0c64a8847e1082f27e5a, type: 2}
+  - IsBuy: 0
+    Data: {fileID: 11400000, guid: 0f0cb07b761120c4da124fa537599310, type: 2}
+  - IsBuy: 0
+    Data: {fileID: 11400000, guid: ea572cf7fab4ab843b3f9d41f58afc87, type: 2}
+  - IsBuy: 0
+    Data: {fileID: 11400000, guid: 4d1fafafee87ea54d850f473b7957bc4, type: 2}
+  PlayerKey: PlayerKey
