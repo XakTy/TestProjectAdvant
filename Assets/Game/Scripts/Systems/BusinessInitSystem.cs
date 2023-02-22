@@ -48,7 +48,12 @@ namespace Game
 		{
 			businessViewRef.NameText.text = businessData.Name;
 			businessViewRef.LevelText.text = state.Level.ToString();
-			businessViewRef.IncomeText.text = (state.Level * businessData.BasicPrice).ToString();
+
+			if (state.Level == 0)
+			{
+				businessViewRef.IncomeText.text = ((state.Level + 1) * businessData.BasicPrice).ToString();
+			}
+
 			businessViewRef.PriceText.text = ((state.Level + 1) * businessData.BasicPrice).ToString();
 		}
 
