@@ -8,6 +8,8 @@ namespace Game
 		private readonly EcsFilter<BusinessViewRef, Level, BusinessDataRef, Multiply, UpdateEvent> _filterUpdateView = default;
 		public void Run()
 		{
+			if (_filterUpdateView.IsEmpty()) return;
+
 			foreach (var i in _filterUpdateView)
 			{
 				var businessViewRef = _filterUpdateView.Get1(i);

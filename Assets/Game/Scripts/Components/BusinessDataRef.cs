@@ -1,6 +1,6 @@
 ﻿using Game.Scripts.SO.BussinesSO;
 
-namespace Game
+namespace Game.Scripts.Components
 {
 	public struct BusinessDataRef
 	{

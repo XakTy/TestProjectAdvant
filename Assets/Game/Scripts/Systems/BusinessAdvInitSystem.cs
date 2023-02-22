@@ -8,11 +8,14 @@ using UnityEngine;
 
 namespace Game
 {
-	public sealed class BusinessAdvInitSystem : IEcsRunSystem
+	public sealed class BusinessAdvInitSystem : IEcsRunSystem, IEcsDestroySystem
 	{
 		private readonly EcsFilter<BusinessViewAdvRef, BusinessStateAdvRef, BusinessAdvDataRef, Parent, InitEvent> _filterBusinessAdv = default;
+		private readonly EcsFilter<BusinessViewAdvRef> _filterBusinessAdvView = default;
 
 		private readonly PlayerData _playerData = default;
+
+		private const string BUYED = "Куплено";
 
 		private const float DIV_VALUE = 100f;
 
@@ -66,10 +69,20 @@ namespace Game
 		private static void DisableButton(BusinessViewAdvRef view)
 		{
 			view.ButtonBuy.interactable = false;
-			view.PriceText.text = "Куплено";
+			view.PriceText.text = BUYED;
 			foreach (var gameObject in view.ObjectsForDisable)
 			{
 				gameObject.SetActive(false);
+			}
+		}
+
+		public void Destroy()
+		{
+			foreach (var i in _filterBusinessAdvView)
+			{
+				var view = _filterBusinessAdvView.Get1(i);
+
+				view.ButtonBuy.onClick.RemoveAllListeners();
 			}
 		}
 	}

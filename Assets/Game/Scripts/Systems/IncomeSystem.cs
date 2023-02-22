@@ -17,6 +17,8 @@ namespace Game
 		}
 		public void Run()
 		{
+			if (_filterIncomeEvent.IsEmpty()) return;
+
 			foreach (var i in _filterIncomeEvent)
 			{
 				var level = _filterIncomeEvent.Get1(i).value;

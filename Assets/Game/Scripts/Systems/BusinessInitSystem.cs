@@ -7,9 +7,10 @@ using Leopotam.Ecs;
 
 namespace Game
 {
-	public sealed class BusinessInitSystem : IEcsRunSystem
+	public sealed class BusinessInitSystem : IEcsRunSystem, IEcsDestroySystem
 	{
 		private readonly EcsFilter<BusinessViewRef, BusinessDataRef, BusinessStateRef, InitEvent> _filterInit = default;
+		private readonly EcsFilter<BusinessViewRef> _filterView = default;
 
 		private readonly PlayerData _playerData = default;
 
@@ -86,5 +87,14 @@ namespace Game
 			}
 		}
 
+		public void Destroy()
+		{
+			foreach (var i in _filterView)
+			{
+				var view = _filterView.Get1(i);
+
+				view.LevelUpButton.onClick.RemoveAllListeners();
+			}
+		}
 	}
 }
